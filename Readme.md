@@ -1,1 +1,1 @@
-### Sorry for the inconvenience please refer to CourseSellingAdminDashboard/ReadMe.md to know more about this project
+### Sorry for the inconvenience please refer to /CourseSellingAdminDashboard/ReadMe.md to know more about this project
