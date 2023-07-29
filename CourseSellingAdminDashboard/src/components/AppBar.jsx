@@ -1,16 +1,14 @@
 import { Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { Button } from "@mui/material";
-import { Navigate, useNavigate } from "react-router-dom";
-import axios from 'axios';
-import zIndex from "@mui/material/styles/zIndex";
+import { useNavigate } from "react-router-dom";
 import { userEmailState } from "../../store/selectors/user";
 import { isUserLoading } from "../../store/selectors/user";
 import { userState } from "../../store/atoms/user";
 import { useSetRecoilState,useRecoilValue } from "recoil";
 function AppBar() {
     const navigate = useNavigate();
-    const[userName,setUserName]=React.useState(null);
+    // const[userName,setUserName]=React.useState(null);
     const userEmail = useRecoilValue(userEmailState);
     const isLoading = useRecoilValue(isUserLoading);
     const setUser = useSetRecoilState(userState);

@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField,useRadioGroup,Select,MenuItem, Card,Button } from "@mui/material";
 import axios from 'axios';
-import { Navigate,useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 function CreateCourse() {
     const navigate = useNavigate();
     const [title, setTitle] = React.useState("");
