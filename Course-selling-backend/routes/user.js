@@ -1,7 +1,21 @@
 const express = require('express');
 const { authenticateJwt, SECRET } = require("../middleware/auth");
 const { User, Course, Admin } = require("../db");
+const jwt = require('jsonwebtoken');
 const router = express.Router();
+
+router.get("/me", authenticateJwt, async (req, res) => {
+  console.log("hi from /me route");
+  const user = await User.findOne({ username: req.user.username });
+  if (!user) {
+    res.status(403).json({msg: "User doesnt exist"})
+    return
+  }
+  console.log(user.username);
+  res.json({
+      username: user.username
+  })
+});
 
   router.post('/signup', async (req, res) => {
     const { username, password } = req.body;
@@ -31,10 +45,8 @@ const router = express.Router();
     const courses = await Course.find({published: true});
     res.json({ courses });
   });
-  
-  router.post('/courses/:courseId', authenticateJwt, async (req, res) => {
+  router.post('/courses/purchase/:courseId',authenticateJwt,async()=>{
     const course = await Course.findById(req.params.courseId);
-    console.log(course);
     if (course) {
       const user = await User.findOne({ username: req.user.username });
       if (user) {
@@ -44,6 +56,15 @@ const router = express.Router();
       } else {
         res.status(403).json({ message: 'User not found' });
       }
+    } else {
+      res.status(404).json({ message: 'Course not found' });
+    }
+  });
+  router.get('/courses/:courseId', authenticateJwt, async (req, res) => {
+    const course = await Course.findById(req.params.courseId);
+    console.log(course);
+    if (course) {
+      res.json({course : course});
     } else {
       res.status(404).json({ message: 'Course not found' });
     }

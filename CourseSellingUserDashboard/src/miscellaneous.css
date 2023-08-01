@@ -1,0 +1,11 @@
+.zoom-card {
+    width: 300px;
+    margin: 2px;
+    transform: scale(1);
+    transition: transform 2s ease-out;
+  }
+  
+  .zoom-card:hover {
+    transform: scale(1.1);
+  }
+  
