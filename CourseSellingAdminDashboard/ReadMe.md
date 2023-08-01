@@ -24,3 +24,15 @@ I am currently working on the admin side of things, and its a big project so i a
 -Fix the stale editing data
 -Convert the code base to typescript
 -Add user side of the course selling website
+
+### How to setup this project 
+-Clone this repo 
+-go to ./Course-selling-backend
+-run npm i in your terminal under this path to download all the dependencies
+-now run node index.js
+-after setting up the backend , now go to /CourseSellingAdminDashboard 
+-run npm i to download all the dependencies
+-now run npm run dev to get the project started
+
+### Note 
+Make sure yur local mongoDb database is working and update the url to your local database in ./Course-selling-backend/index.js 
